@@ -1,0 +1,418 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[11pt, notitlepage]{article}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\usepackage{amsmath}
+\setlength\parindent{0pt}
+\usepackage{amsmath,bm}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage{cite}
+\usepackage{graphicx}
+\def\\ln{\mathrm{\ln}}
+\def\\exp{\mathrm{\exp}}
+\def\\max{\mathrm{\max}}
+
+\def\mathbi#1{\textbf{\em #1}}            %math bold italic letters(use $\mathbi{A}$ etc.)
+\def\d{\mathnormal{d}}   
+
+\title{Interest Rate Derivatives Final}
+\author{Elizabeth Zhang (kz942)}     
+\date{\today}
+\bibliographystyle{plain}
+
+\begin{document}
+\maketitle
+{\centering
+  \textbf {Outline}\par
+}
+\begin{table}[H]
+\centering
+\scalebox{1.2}{
+\begin{tabular}{|c|c|}
+\hline
+Question Number & Page Number \\ \hline
+1               & 2~-~3         \\ \hline
+2               & 4           \\ \hline
+3               & 5           \\ \hline
+4               & 6~-~8         \\ \hline
+5               & 9           \\ \hline
+6               & 10          \\ \hline
+\end{tabular}%
+}
+\end{table}
+\newpage
+\section{}
+% 1.a
+\color{red}
+\textbf {1.a  A CBB pays out a fixed 10\% per year, with a principal of \$1,000 and a maturity of ten years. Decompose the coupon bond into a set of ZCB.}
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+
+
+The pay out per year is $C_i = \$1,000 * 10\% = \$100, i = 1,2,...,10, P_T = \$1,000 $. So the CBB can be decomposed in to 9 ZCBs with maturities from 1 year to 9 years and each has a principal of \$100 and a ZCB with a maturity of 10 years and a principal of \$1,100.
+
+% 1.b
+\color{red}
+\vspace{5mm}
+\textbf {1.b  Show (e.g excel) how \$1,000 grows when it is invested at a continuously compounded rate of 7\% per annum. Redo the calculation for a discretely compounded rate of 7\%, paid once per annum. Which long position’s rate is preferable? Why?}
+
+\color{black}
+\vspace{5mm}
+\textbf {Ans:}
+The continuous method is preferable. The continuously compounded rate has a high return than discretely compounded rate.
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.35\linewidth]{1b.png}
+  \caption{$r = 7\%$}
+  \label{1b}
+\end{figure}
+
+% 1.c
+\color{red}
+\vspace{5mm}
+\textbf {1.c A ZCB has a principal of \$100 and matures in 5 years. The market price for the
+bond is \$64. Calculate the yield to maturity, duration and convexity for the bond,
+for discrete and continuous formulations. Comment on the results.}
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+
+The ZCB with continuous interest has a lower yield, longer duration and smaller convexity compared to a ZCB with discrete interest. \
+
+~\
+
+For discrete condition:
+\begin{equation*}
+\begin{aligned}
+y_z &=\big(\frac{1}{Z(0;T)}\big)^{1/T} - 1 = (100/64)^{\frac{1}{5}} - 1 = 0.093\\
+D_z &= \frac{T}{1+y} = 4.57\\
+C_z &= \frac{T(T+1)}{(1+y)^2} = 25.09\\
+\end{aligned}
+\end{equation*}
+
+For continuous condition:
+\begin{equation*}
+\begin{aligned}
+y_z &= - \frac{\ln(Z(0;T))}{T} = - \frac{\ln(64/100)}{5} = 0.089\\
+D_z &= T = 5\\
+C_z &= T^2 = 25\\
+\end{aligned}
+\end{equation*}
+
+
+
+% 1.d
+\color{red}
+\vspace{5mm}
+\textbf {1.d A CBB pays out twice a year 7\% per annum, on a principal of \$100. The bond matures in 5 years and has a market value \$92. Calculate the yield to maturity, duration and convexity for the bond, for discrete and continuous formulations.}
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+
+For discrete formulation:
+\begin{equation*}
+\begin{aligned}
+&B(0;5) = \frac{P_T}{(1+y)^{T-t}} + \sum^10_{i=1} \frac{C_i}{(1+y)^{t_i - t} }= 92\\
+&y_z(0;5) = 0.0923 = 9.23\%\\ 
+&D_z(0;5) = 4.08\\
+&C_z(0;5) = \frac{(T-t)(T-t-1)}{(1+y)^2} * \frac{P_r}{B(t;T)(1+y)^{T-t}}\\
+&~~~~~~~~~+\sum^N_{i=1} \frac{(t_i-t)(t_i-t+1)}{(1+y)^2} \frac{C_i}{B(t;T)(1+y)^{t_i-t}} = 20.34
+\end{aligned}
+\end{equation*}
+
+For continuous formulation:
+\begin{equation*}
+\begin{aligned}
+&B(0;5) = P_T e^{-10y}= 92\\
+&y_z(0;5) = 0.0883 = 8.83\%\\ 
+&D_z(0;5) =(T-t) \cdot \frac{P_T e^{-y(t-t)}}{B(t;T)} + \sum^N_{i=1} (t_i-t) \frac{C_i e^{-y \cdot t_i}}{B(t;T)} =  4.27\\
+&C_z(0;5) =(T-t)^2 \cdot \frac{P_T e^{-y(t-t)}}{B(t;T)} + \sum^N_{i=1} (t_i-t)^2 \frac{C_i e^{-y \cdot t_i}}{B(t;T)}= 20.08
+\end{aligned}
+\end{equation*}
+
+% Question 2
+\newpage
+\section{}
+\color{red}
+\textbf {We wish to find the approximate value of a cashflow for a floorlet on the one month LIBOR, when using the Vasicek model. Show that this is given by:
+$$\max\bigg(r_j - r -\frac{1}{24}( \eta - \gamma r), 0 \bigg)$$
+where $r_f$ is the floor rate and r the spot rate. You must start by considering the yield curve power series expression given in the calibration and data analysis lecture. Full working should be given for the series expansion. Do not use an affine solution of the form $\exp(A-rB)$ for this question.}
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+
+In the Vasicek Model, $r$ follows
+$$\d r = (\eta - \gamma r)dt + \sqrt{\beta}dX$$
+The bond price satisfies
+$$ \frac{\partial V}{\partial t} + \frac{\beta}{2} \frac{\partial^2 V}{\partial r^2} + (\eta - \gamma r)\frac{\partial V}{\partial r} = rV$$
+
+Let $Y = lnV$,
+$$ \frac{\partial Y}{\partial t} = \frac{\partial Y}{\partial V}\frac{\partial V}{\partial t}$$
+$$ \frac{\partial Y}{\partial r} = \frac{\partial Y}{\partial V}\frac{\partial V}{\partial r}$$
+$$ \frac{\partial ^2 Y}{\partial r^2} = \frac{\partial Y_r}{\partial r} = \frac{1}{V}\cdot \frac{\partial^2 V}{\partial r^2} - (\frac{\partial W}{\partial V} \cdot \frac{\partial V }{\partial r})^2$$
+$$ \to Y_t + \frac{\beta}{2} (Y_{rr} + Y_r ^2) + (\eta-\gamma r)Y_r = r$$
+
+Assume $Y_t$ has a taylor expansion form as:
+$$ Y(r,t;T) = Y(r,t;T) + a(r)(T-t) + b(r)(T-t)^2 + (T-t)^3 \cdot f_1(t)$$ is true for any $t$, where $f_1(t)$ is a function about $t$, $Y(t,T;T) = 0$. Then we have
+$$ 0 = (-a(r) -r) + (-2b(r) + \frac{\beta}{2}a''(r) + (\eta -\gamma r)a'(r)) (T-t) + (T-t)^2 \cdot f_2(t)$$
+where $f_2(t)$ is a function about t. 
+$$\to a(r) = -r, b(r) = -\frac{1}{2}(\eta - \gamma r)$$
+
+Then we get the power expression for yield curve:
+$$ y = -\frac{\ln V}{T-t} = r +\frac{1}{2}(\eta - \gamma r)(T-t) + HOT$$
+
+For one month LIBOR, $T-t = \frac{1}{12}$.
+
+$$ y \approx r+\frac{1}{2}(\eta - \gamma r)(T-t) = r +\frac{1}{24} (\eta - \gamma r)$$
+
+Therefore, the approximate value of a cashflow for a floorlet on one month LIBOR is $\max(r_f - r -\frac{1}{24}(\eta - \gamma r), 0)$.
+
+
+\newpage
+% Question 3
+\section{}
+\color{red}
+\textbf{Consider the spot rate $r$, which evolves according to the popular form
+$$dr = u(r) dt + \nu r^\beta dX$$
+where $\nu$ and $\beta$ are constants. }
+
+\textbf{Suppose such a model has a steady state transition probability density function $p_\infty(r)$ that satisfies the forward Fokker Planck Equation (aka FKE)}
+
+\textbf{Show that this implies that the drift structure is given by
+$$ u(r) = \nu ^2 \beta r^{2\beta-1} + \frac{1}{2} \nu^2 r^{2\beta} \frac{d}{dr}(\ln p_\infty)$$}
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+
+Fokker-Planck states that: If
+$$dX_t = \mu(X_t,t,)dt + \sigma(X_t,t)dW_t$$
+, let $D(x,t) = \sigma^2$, then its density satisfies PDE:
+$$\frac{\partial p(x,t)}{\partial t} = \frac{\partial}{\partial x} [\mu(x,t)p(x,t)] + \frac{\partial^2}{\partial x^2}[D(x,t) p(x,t)]$$
+Since this model has a steady state transition probability density function$p_\infty(r)$, $\frac{\partial p_\infty(r)}{\partial t} = 0$.
+
+Let $D(r,t) = \frac{\nu^2 r^{2\beta}}{2}$, then we have
+$$ \frac{\partial [u(r,t)p_\infty(r)]}{\partial r} = \frac{\partial^2}{\partial r^2} [D(r,t)p_\infty(r)]$$
+Taking the integral of both sides,
+$$u(r,t) p_\infty(r) =\frac{\partial}{\partial r} [D(r,t)p_\infty(r)] =  D'(r,t) p_\infty(r) + D(r,t)p'_\infty(r)$$
+$$ \to u(r,t) = D'(r,t) + D(r,t) \frac{p'_\infty(r)}{p_\infty(r)}$$
+$$ \to u(r,t) = \nu ^2 \beta r^{2\beta-1} + \frac{1}{2} \nu^2 r^{2\beta} \frac{d}{dr}(\ln p_\infty(r))$$
+
+
+% Question 4.1
+\newpage
+\vspace{5mm}
+\section{}
+\color{red}
+\bfseries
+4.a Given the risk neutral expectation of the ZCB pricing with the Fundamental Asset Pricing Formula, express the detailed pseudo code algorithm for the numerical pricing of a Zero Coupon Bond using Monte Carlo Simulation.
+\mdseries
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+
+The Fundamental Asset Pricing Formula is that the risk neutral expectation of the present conditional on $F_t^-$ hence for the ZCB:
+$$ B(t;T) =  A(t) E_t^\theta [ \frac{1}{A(T)}]  = E_t^Q[e^{-\int_t^T r_sds}]$$
+
+$r_t$ is given by:
+$$dr(t) = (\mu - \sigma_t\theta_t)dt + \sigma_t (dX_t^P + \theta_tdt), r(0) = r_0$$
+$$ r_{t+\Delta t} \approx r_t + (\mu - \sigma_t \theta_t) \Delta t + \sigma \xi_t \sqrt{\Delta t} +\sigma_t \theta_t \Delta t,~~\xi_t \sim N(0,1)$$
+$$\to r_{t+\Delta t} \approx r_t + \mu \Delta t + \sigma \xi_t \sqrt{\Delta t},~~\xi_t \sim N(0,1)$$
+
+Pseudo code:
+
+1. Generate N random number $\xi_t$, $\xi_t \sim N(0,1)$.
+
+2. Generate a path of $r_t$ according to the equation above, $\Delta t = (T-t)/N$.
+
+3. Calculate $e^{-\int_t^T r_s ds}$,  $\int_t^T r_s ds$ is calculated by $\sum r_s * (T-t)/N$.
+
+4. Repeat $1 \sim 3$ for M times, M is a large number.
+
+5. $B(t;T)$ is the arithmetic-geometric mean of all the results.
+
+% Question 4.2
+\vspace{10mm}
+\color{red}
+\bfseries
+4.b Express the forward Brownian Motion with the RW/BM using market price of risk and bond volatility.
+\mdseries
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+$$ X_t^T = X_t^\theta - \int^t_0 \beta(s;T)ds$$
+$X^T$ is the forward brownian motion, is inferred from P-RW to Q-Spot-RN then from Q-Spot-RN to T-fwd-RN.
+$$X_t^\theta = X_t^P + \int^t_0 \theta_s ds$$
+then $$X_t^T = X_t^P + \int^t_0 \theta_s ds - \int^t_0 \beta(s;T)ds = X_t^P + \int^t_0(\theta_s - \beta(s;T))ds$$
+
+
+% Question 4.3
+\vspace{10mm}
+\color{red}
+\bfseries
+4.c Demonstrate the values of $\d \Lambda_t$ and $\d(1/\Lambda_t)$ (hint: apply Ito)
+\mdseries
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+$$ \Lambda_t = \exp({-\frac{1}{2}\int^t_0(\beta(s;T)^2 ds + \int^t_0 \beta(s;T) dX_s^Q}) $$
+$$ Y = \ln X = -\frac{1}{2}\int^t_0(\beta(s;T))^2 ds + \int^t_0 \beta(s;T) dX_s^Q$$
+$$\d Y = -\frac{1}{2}(\beta(t;T))^2 + \beta(t;T)dX_s^Q$$
+By Ito's lemma,
+\begin{equation*}
+\begin{aligned}
+\d \Lambda_t  &= \d e^{Y_t} = e^{Y_t}\d Y_t+\frac{1}{2} e^{Y_t} (\d Y_t)^2\\
+& = \Lambda_t \beta (t,T)dX_t^Q - \frac{1}{2} \Lambda_t \beta^2(t;T)dt + \frac{1}{2} \Lambda_t \beta^2(t,T)dt\\
+& = \Lambda_t \beta(t,T)dX_t^Q
+\end{aligned}
+\end{equation*}
+
+Similarly, we have
+\begin{equation*}
+\begin{aligned}
+\d (1/\Lambda_t)  &= \d e^{-Y_t} = - e^{-Y_t}\d Y_t+\frac{1}{2} e^{-Y_t} (\d Y_t)^2\\
+& = - \Lambda_t^{-1} \beta (t,T)dX_t^Q + \frac{1}{2} \Lambda_t^{-1} \beta^2(t;T)dt + \frac{1}{2} \Lambda_t^{-1} \beta^2(t,T)dt\\
+& = - \Lambda_t^{-1} \beta(t,T)dX_t^Q + \Lambda_t^{-1} (\beta(t;T))^2 \d t
+\end{aligned}
+\end{equation*}
+
+\vspace{10mm}
+% Question 4.4
+\color{red}
+\bfseries
+4.d Show that an Euro Call on a ZCB is
+\begin{equation*}
+\left \{
+  \begin{aligned}
+    &C(t) = B(t;U)N(d_1(B(t;U), t, T)) - K\cdot B(t;T)N_2(d_2(B(t;T), t,T))\\
+    &d_1(b,t,T) = \frac{\ln \frac{b}{K} - \ln B(t;T) + \frac{1}{2}\nu^2(t,T)}{\nu(t;T)}  ~~~~d_2(b,t,T) = d_1(b,t,T)-\nu_\theta(t;T) \\
+    &\nu^2(t;T) = \int_t^T (\beta(s;U) - \beta(s;T))ˆ2 ds
+  \end{aligned} \right.
+\end{equation*}
+\mdseries
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+\begin{equation*}
+\begin{aligned}
+C(t;T) &= A(t)\bigg(E_t^Q\bigg[\frac{I_{B(T;U)>K}}{A(U)}\bigg] - K\cdot E_t^Q\bigg[\frac{I_{B(T,U)<K}}{A(T)}\bigg]\bigg) \\
+&= B(t;U) \cdot N(d_1(B(t,U),t,T)) - K\cdot B(t;T), t,T))
+\end{aligned}
+\end{equation*}
+
+Since the bond volatility $\beta (t;T)$ is a stochastic, we have
+$$ \nu_\theta^2 (t;T) = \int^T_t(\beta(s;U) - \beta(s;T))^2 ds$$
+
+Let's look at the original B-S formula,
+$$ C = S_t N(d_1) - K \cdot e^{-rt}N(d_2) $$
+$$ d_1 = \frac{1}{\sigma \sqrt{T-t}}\bigg[ln\bigg(\frac{S_t}{K}\bigg) + (r + \frac{\sigma^2}{2}(T-t) \bigg]$$
+$$ d_2 = d_1 - \sigma \sqrt{T-t} $$
+
+For ZCB,
+ $$\sigma \sqrt{T-t} = \sqrt{\nu_\theta^2 (t;T)} = \nu_\theta (t;T) $$
+ $$S_t = B(t,U)$$
+ $$r(T-t) = \int^T_t r_sds = -\ln B(t;T)$$
+ 
+then we have
+$$d_1(b,t,T) = \frac{\ln \frac{b}{K} - \ln B(t;T) + \frac{1}{2}\nu^2(t,T)}{\nu(t;T)}$$
+$$d_2(b,t,T) = d_1(b,t,T)-\nu_\theta(t;T)$$
+
+Finally we get
+\begin{equation*}
+\left \{
+  \begin{aligned}
+    &C(t) = B(t;U)N(d_1(B(t;U), t, T)) - K\cdot B(t;T)N_2(d_2(B(t;T), t,T))\\
+    &d_1(b,t,T) = \frac{\ln \frac{b}{K} - \ln B(t;T) + \frac{1}{2}\nu^2(t,T)}{\nu(t;T)}  ~~~~d_2(b,t,T) = d_1(b,t,T)-\nu_\theta(t;T) \\
+    &\nu^2(t;T) = \int_t^T (\beta(s;U) - \beta(s;T))ˆ2 ds
+  \end{aligned} \right. 
+\end{equation*}
+
+\newpage
+% Question 5
+\section{}
+\color{red}
+\bfseries
+Consider the Cox, Ingersoll \& Ross model for the spot rate r given by
+$$ dr = (\eta - \gamma r) dt + \sqrt{\alpha r} dX$$
+with mean rate $\eta/\gamma$ and reversion rate $\gamma$. Suppose $\eta/\gamma = 0.1$ and $\gamma = 0.1$, and diffusion of the process is $\sqrt{\alpha r} = 0.02$. Price a Zero Coupon Bond of the form $Z(r,t,;T) = \exp \{(A(t;T) - rB(t;T)\}$ that matures in year 10, if the spot rate $r= 10\%$: The forms of $A(t;T)$ and $B(t;T)$ provided below
+
+\begin{equation*}
+\left.
+  \begin{aligned}
+    &Z(r,t;T) = e^{A(t;T) - rB(t;T)}\\
+    &u(r,t) - \kappa(r,t) \omega(r;t) = \eta(t) - \gamma(t) r\\
+    &\omega(r,t) = \sqrt{\alpha(t)r + \beta(t)}
+  \end{aligned} \right\}
+\end{equation*}
+
+\begin{equation*}
+\Rightarrow \left \{
+  \begin{aligned}
+    &B(t;T)= \frac{2(e^{\psi_1 (t)(T-t)}-1)}{(\gamma(t) +\psi_1(t))(e^{\psi_1(t)(T-t)}-1)+2\psi_1(t)}\\
+    &A(t;T) = \frac{2a(t)}{\alpha(t)}\psi_2(t) \ln(a(t)-B(t;T)) - \frac{2a(t)\psi_2(t)}{\alpha(t)}\ln a(t)\\
+    & ~~~~~~~~~ +\bigg(\frac{2\psi _2(t)}{\alpha(t)} + \frac{\beta(t)}{\alpha(t)}\bigg) b(t) \ln \bigg(\frac{B(t;T) + b(t)}{b(t)} \bigg) - \frac{B(t;T)\beta(t)}{\alpha (t)}\\
+    & \left \{ 
+    \begin{aligned}
+    &\psi_1(t) = \sqrt{\gamma^2(t) + 2\alpha(t)} ~~~~~ \psi_2(t) = \frac{\eta(t) - \frac{a(t)\beta(t)}{2}}{a(t) + b(t)}\\
+    &a(t) = \frac{-\gamma(t) + \psi_1(t)}{\alpha(t)} ~~~~~b(t) = \frac{\gamma(t) + \psi_1(t)}{\alpha(t)}
+    \end{aligned} \right.
+  \end{aligned} \right. 
+\end{equation*}
+\mdseries
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+
+\begin{figure}[h]
+\centering
+  \includegraphics[width=0.8\linewidth]{q5.png}
+  \caption{$Calculation in Jupyter Notebook$}
+  \label{1b}
+\end{figure}
+Price of the ZCB $= 0.3799$.
+
+\newpage
+% Question 6
+\color{red}
+\section{}
+\bfseries
+Consider the process given by 
+$$ dU_t = -\gamma U_t dt + \sigma dX_t, ~~U_0 =u$$
+where $\gamma, \sigma$ are constants and $dX_t$ is an increment in a Wiener process. Solve this equation for $U_t$ and hence write down $E[U_t]$.
+\mdseries
+
+\vspace{5mm}
+\color{black}
+\textbf {Ans:}
+
+\begin{equation*}
+\begin{aligned}
+dU_t &= -\gamma U_t dt + \sigma dX_t \\ 
+d e^{\gamma t}U_t & = e^{\gamma t}dU_t + \gamma e^{\gamma t} U_t dt\\
+& = e^{\gamma t}(-\gamma U_t dt + \sigma dX_t) + \gamma e^{\gamma t} U_t dt\\
+&= \sigma e^{\gamma t} dX_t\\
+e^{\gamma t} U_t - U_0 &= \sigma \int^t_0 e^{\gamma t} dX_s, ~~ U_0 = u\\
+U_t & = e^{-\gamma t} u + \sigma \int^t_0 e^{\gamma (s-t)} dX_s
+\end{aligned}
+\end{equation*}
+
+Then we have
+$$ E(U_t) = e^{-\gamma t}u$$
+
+\end{document}
